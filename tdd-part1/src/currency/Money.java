@@ -31,11 +31,19 @@ public class Money implements Expression {
 		return new Money(amount * multiplier, currency);
 	}
 	
+//	public Expression plus(Money addend) {
+//		return new Money(amount + addend.amount, currency); 
+//	}
+	
 	public Expression plus(Money addend) {
-		return new Money(amount + addend.amount, currency); 
+		return new Sum(this, addend);
 	}
 	
 	public String toString() {
 		return amount + " " + currency;
+	}
+	
+	public Money reduce(String to) {
+		return this;
 	}
 }

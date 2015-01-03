@@ -9,6 +9,7 @@ import org.junit.Test;
 import currency.Bank;
 import currency.Expression;
 import currency.Money;
+import currency.Sum;
 
 
 public class MultiCurrencyMoneyTest {
@@ -51,6 +52,30 @@ public class MultiCurrencyMoneyTest {
 		Bank bank= new Bank();
 		Money reduced= bank.reduce(sum, "USD");
 		assertEquals(Money.dollar(10), reduced);
+	}
+	/** Chapter 13. Make It */
+	@Test
+	public void testPlusReturnsSum() {
+		Money five= Money.dollar(5);
+		Expression result= five.plus(five);
+		Sum sum= (Sum) result;
+		assertEquals(five, sum.augend);
+		assertEquals(five, sum.addend);
+	}
+	/** Chapter 13. Make It */
+	@Test
+	public void testReduceSum() {
+		Expression sum= new Sum(Money.dollar(3), Money.dollar(4));
+		Bank bank= new Bank();
+		Money result= bank.reduce(sum, "USD");
+		assertEquals(Money.dollar(7), result);
+	}
+	/** Chapter 13. Make It */
+	@Test
+	public void testReduceMoney() {
+		Bank bank= new Bank();
+		Money result= bank.reduce(Money.dollar(1), "USD");
+		assertEquals(Money.dollar(1), result);
 	}
 	
 //	/** Chapter 1. Multi-Currency Money (Test Case) */
