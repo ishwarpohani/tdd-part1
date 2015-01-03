@@ -100,6 +100,17 @@ public class MultiCurrencyMoneyTest {
 		assertEquals(1, new Bank().rate("USD", "USD"));
 	}
 	
+	/** Chapter 15. Mixed Currencies */
+	@Test
+	public void testMixedAddition() {
+		Expression fiveBucks= Money.dollar(5);
+		Expression tenFrancs= Money.franc(10);
+		Bank bank= new Bank();
+		bank.addRate("CHF", "USD", 2);
+		Money result= bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+		assertEquals(Money.dollar(10), result);
+	}
+	
 //	/** Chapter 1. Multi-Currency Money (Test Case) */
 //	@Test
 //	public void testMultiplicationCH1() {
