@@ -78,6 +78,28 @@ public class MultiCurrencyMoneyTest {
 		assertEquals(Money.dollar(1), result);
 	}
 	
+	/** Chapter 14. Change */
+	@Test
+	public void testReduceMoneyDifferentCurrency() {
+		Bank bank= new Bank();
+		bank.addRate("CHF", "USD", 2);
+		Money result= bank.reduce(Money.franc(2), "USD");
+		assertEquals(Money.dollar(1), result);
+	}
+	
+	/** Chapter 14. Change */
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testArrayEquals() {
+		assertEquals(new Object[] {"abc"}, new Object[] {"abc"});
+	}
+	
+	/** Chapter 14. Change */
+	@Test
+	public void testIdentityRate() {
+		assertEquals(1, new Bank().rate("USD", "USD"));
+	}
+	
 //	/** Chapter 1. Multi-Currency Money (Test Case) */
 //	@Test
 //	public void testMultiplicationCH1() {
