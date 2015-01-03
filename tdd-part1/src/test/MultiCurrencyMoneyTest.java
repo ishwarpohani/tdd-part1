@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import currency.Dollar;
+import currency.Franc;
 
 
 public class MultiCurrencyMoneyTest {
@@ -49,10 +50,22 @@ public class MultiCurrencyMoneyTest {
 	 * Chapter 4. Privacy
 	 * Test Case
 	 */
+	@Test
 	public void testMultiplication() {
 		Dollar five= new Dollar(5);
 		assertEquals(new Dollar(10), five.times(2));
 		assertEquals(new Dollar(15), five.times(3));
+	}
+	
+	/**
+	 * Chapter 5. Franc-ly Speaking
+	 * Test Case
+	 */
+	@Test
+	public void testFrancMultiplication() {
+		Franc five= new Franc(5);
+		assertEquals(new Franc(10), five.times(2));
+		assertEquals(new Franc(15), five.times(3));
 	}
 	
 }
