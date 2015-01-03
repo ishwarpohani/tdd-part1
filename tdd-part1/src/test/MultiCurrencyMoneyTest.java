@@ -43,6 +43,11 @@ public class MultiCurrencyMoneyTest {
 		assertEquals("USD", Money.dollar(1).currency());
 		assertEquals("CHF", Money.franc(1).currency());
 	}
+	/** Chapter 10. Interesting Times (Test Case) */
+	@Test
+	public void testDifferentClassEquality() {
+		assertTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
+	}
 	
 	
 //	/** Chapter 1. Multi-Currency Money (Test Case) */
