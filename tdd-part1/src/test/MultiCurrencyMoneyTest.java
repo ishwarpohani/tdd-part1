@@ -54,11 +54,22 @@ public class MultiCurrencyMoneyTest {
 	}
 	
 	/** Chapter 6. Equality for All, Redux (Test Case) */
+	@Test
+	public void testEqualityCH6() {
+		assertTrue(new Dollar(5).equals(new Dollar(5)));
+		assertFalse(new Dollar(5).equals(new Dollar(6)));
+		assertTrue(new Franc(5).equals(new Franc(5)));
+		assertFalse(new Franc(5).equals(new Franc(6)));
+	}
+	
+	/** Chapter 7. Apples and Oranges (Test Case) */
+	@Test
 	public void testEquality() {
 		assertTrue(new Dollar(5).equals(new Dollar(5)));
 		assertFalse(new Dollar(5).equals(new Dollar(6)));
 		assertTrue(new Franc(5).equals(new Franc(5)));
 		assertFalse(new Franc(5).equals(new Franc(6)));
+		assertFalse(new Franc(5).equals(new Dollar(5)));
 	}
 	
 }
