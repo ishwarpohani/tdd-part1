@@ -6,8 +6,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import currency.Dollar;
-import currency.Franc;
 import currency.Money;
 
 
@@ -19,15 +17,6 @@ public class MultiCurrencyMoneyTest {
 		Money five = Money.dollar(5);
 		assertEquals(Money.dollar(10), five.times(2));
 		assertEquals(Money.dollar(15), five.times(3));
-	}
-	/** Chapter 8. Makin' Objects (Test Case) */
-	@Test
-	public void testEquality() {
-		assertTrue(Money.dollar(5).equals(Money.dollar(5)));
-		assertFalse(Money.dollar(5).equals(Money.dollar(6)));
-		assertTrue(Money.franc(5).equals(Money.franc(5)));
-		assertFalse(Money.franc(5).equals(Money.franc(6)));
-		assertFalse(Money.franc(5).equals(Money.dollar(5)));
 	}
 	/** Chapter 8. Makin' Objects (Test Case) */
 	@Test
@@ -43,10 +32,13 @@ public class MultiCurrencyMoneyTest {
 		assertEquals("USD", Money.dollar(1).currency());
 		assertEquals("CHF", Money.franc(1).currency());
 	}
-	/** Chapter 10. Interesting Times (Test Case) */
+	
+	/** Chapter 11. The Root of All Evil (Test Case) */
 	@Test
-	public void testDifferentClassEquality() {
-		assertTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
+	public void testEquality() {
+		assertTrue(Money.dollar(5).equals(Money.dollar(5)));
+		assertFalse(Money.dollar(5).equals(Money.dollar(6)));
+		assertFalse(Money.franc(5).equals(Money.dollar(5)));
 	}
 	
 	
@@ -110,6 +102,15 @@ public class MultiCurrencyMoneyTest {
 //		assertFalse(new Franc(5).equals(new Dollar(5)));
 //	}
 
+//	/** Chapter 8. Makin' Objects (Test Case) */
+//	@Test
+//	public void testEqualityCH8() {
+//		assertTrue(Money.dollar(5).equals(Money.dollar(5)));
+//		assertFalse(Money.dollar(5).equals(Money.dollar(6)));
+//		assertTrue(Money.franc(5).equals(Money.franc(5)));
+//		assertFalse(Money.franc(5).equals(Money.franc(6)));
+//		assertFalse(Money.franc(5).equals(Money.dollar(5)));
+//	}
 
 	
 }
